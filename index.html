@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://127.0.0.1:8081/#services -->
+<html lang="zh-TW"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美音鋼琴 - 澳門鋼琴直銷</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link href="./css2" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #f7f5f0;
+      --bg-warm: #eee9e0;
+      --bg-dark: #333333;
+      --text: #2c2926;
+      --text-muted: #6b6560;
+      --accent: #c4a36a;
+      --accent-dark: #9c7f4a;
+      --border: #ddd6c8;
+      --white: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(247, 245, 240, 0.97);
+      border-bottom: 1px solid var(--border);
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-inner {
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .nav-logo img {
+      height: 40px;
+    }
+
+    .nav-logo span {
+      font-family: 'DFGMincho-SU', 'STHeiti Light', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      font-weight: 400;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-phone {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--text);
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 5rem 8rem;
+      position: relative;
+    }
+
+    .hero-tag {
+      font-size: 0.7rem;
+      letter-spacing: 6px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-sub {
+      font-family: 'DFGMincho-SU', 'STHeiti Light', sans-serif;
+      font-size: 1.1rem;
+      color: var(--accent-dark);
+      font-weight: 400;
+      letter-spacing: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-desc {
+      font-family: 'DFGMincho-SU', 'STHeiti Light', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      line-height: 2.2;
+      margin-bottom: 2.5rem;
+      max-width: 450px;
+    }
+
+    .desc-line {
+      display: block;
+      letter-spacing: 1px;
+    }
+
+    .desc-highlight {
+      color: var(--text);
+      font-weight: 400;
+      font-size: 1.05rem;
+      position: relative;
+      padding-left: 0.5rem;
+    }
+
+    .desc-highlight::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--text);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      transition: all 0.35s;
+      border: 1px solid var(--text);
+    }
+
+    .btn:hover {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-right::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to right, var(--bg) 0%, transparent 30%);
+    }
+
+    /* SECTION */
+    .section {
+      padding: 7rem 0;
+    }
+
+    .section-warm {
+      background: var(--bg-warm);
+    }
+
+    .section-dark {
+      background: var(--bg-dark);
+      color: var(--white);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+
+    .sec-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .sec-label {
+      font-size: 0.65rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: 4px;
+    }
+
+    .sec-line {
+      width: 50px;
+      height: 2px;
+      background: var(--accent);
+      margin: 1.5rem auto 0;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .about-item {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      background: var(--white);
+      border: 1px solid #333333;
+      border-radius: 12px;
+      transition: all 0.4s;
+    }
+
+    .about-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(44,41,38,0.1);
+      border-color: var(--accent);
+    }
+
+    .about-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1.5rem;
+      background: var(--bg);
+      border: 1px solid #333333;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DFGMincho-SU', 'STHeiti Light', sans-serif;
+      font-size: 1.2rem;
+      color: #333333;
+      transition: all 0.4s;
+    }
+
+    .about-item:hover .about-icon {
+      background: #333333;
+      color: var(--white);
+      border-color: #333333;
+    }
+
+    .about-item h4 {
+      font-family: 'DFGMincho-SU', 'STHeiti Light', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      margin-bottom: 0.8rem;
+      color: var(--text);
+    }
+
+    .about-item p {
+      font-family: 'DFGMincho-SU', 'STHeiti Light', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+      letter-spacing: 1px;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: all 0.4s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(44,41,38,0.12);
+      border-color: var(--accent);
+    }
+
+    .service-img {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .service-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s;
+    }
+
+    .service-card:hover .service-img img {
+      transform: scale(1.1);
+    }
+
+    .service-body {
+      padding: 2rem;
+    }
+
+    .service-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      margin-bottom: 0.6rem;
+    }
+
+    .service-body p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* PRODUCTS */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .product-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem 1.5rem;
+      background: linear-gradient(transparent, rgba(26,24,22,0.9));
+    }
+
+    .product-overlay h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: var(--white);
+    }
+
+    .product-overlay span {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.6rem;
+      letter-spacing: 2px;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.2rem 0.8rem;
+    }
+
+    /* KNOWLEDGE */
+    .knowledge-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .knowledge-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: all 0.4s;
+    }
+
+    .knowledge-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(44,41,38,0.1);
+      border-color: var(--accent);
+    }
+
+    .knowledge-img {
+      width: 100%;
+      height: 150px;
+      overflow: hidden;
+    }
+
+    .knowledge-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s;
+    }
+
+    .knowledge-card:hover .knowledge-img img {
+      transform: scale(1.1);
+    }
+
+    .knowledge-body {
+      padding: 1.5rem;
+    }
+
+    .knowledge-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .contact-list {
+      list-style: none;
+    }
+
+    .contact-list li {
+      margin-bottom: 2.2rem;
+      padding-bottom: 2.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .contact-list li:last-child {
+      border-bottom: none;
+    }
+
+    .contact-tag {
+      font-size: 0.6rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-val {
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .wechat-row {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .wechat-row img {
+      width: 80px;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .wechat-row p {
+      font-size: 0.75rem;
+      color: #888;
+    }
+
+    .map-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      min-height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .map-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .map-box p {
+      font-size: 0.9rem;
+      color: #888;
+      line-height: 2;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #13110f;
+      color: #666;
+      text-align: center;
+      padding: 3.5rem 2rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo img {
+      height: 32px;
+      filter: brightness(0) invert(1);
+      opacity: 0.5;
+    }
+
+    .footer-logo span {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+      opacity: 0.5;
+    }
+
+    .footer-time {
+      font-size: 0.75rem;
+      opacity: 0.4;
+      margin-bottom: 1.5rem;
+      letter-spacing: 2px;
+    }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      opacity: 0.3;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-left {
+        padding: 8rem 2rem 4rem;
+      }
+      .hero-right {
+        height: 50vh;
+      }
+      .hero-right::after {
+        background: linear-gradient(to bottom, var(--bg) 0%, transparent 30%);
+      }
+      .nav-links { display: none; }
+      .about-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .knowledge-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .about-grid,
+      .services-grid,
+      .products-grid,
+      .knowledge-grid { grid-template-columns: 1fr; }
+      .container { padding: 0 1.5rem; }
+      .hero h1 { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="http://127.0.0.1:8081/#home" class="nav-logo">
+        <img src="./logo.png" alt="美音鋼琴">
+        <span>美音鋼琴直銷</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="http://127.0.0.1:8081/#home">首頁</a></li>
+        <li><a href="http://127.0.0.1:8081/#about">簡介</a></li>
+        <li><a href="http://127.0.0.1:8081/#services">服務</a></li>
+        <li><a href="http://127.0.0.1:8081/#knowledge">知識</a></li>
+        <li><a href="http://127.0.0.1:8081/#contact">聯絡</a></li>
+      </ul>
+      <div class="nav-phone">TEL +853 65947744</div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-left">
+      <h1>YAMAHA<br>KAWAI</h1>
+      <p class="hero-sub">日本原裝鋼琴</p>
+      <p class="hero-desc">
+        <span class="desc-line desc-highlight">日本直運 · 大型鋼琴展廳</span>
+        <span class="desc-line desc-highlight">大量現貨 · 歡迎親臨或預約參觀選購</span>
+      </p>
+      <a href="http://127.0.0.1:8081/#services" class="btn">查看服務</a>
+    </div>
+    <div class="hero-right">
+      <img src="./hero-piano.jpg" alt="鋼琴">
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="sec-header">
+        <p class="sec-label">About Us</p>
+        <h2 class="sec-title">公司簡介</h2>
+        <div class="sec-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-item">
+          <div class="about-icon">正</div>
+          <h4>正品保障</h4>
+          <p>日本原裝<br>杜絕二手翻新</p>
+        </div>
+        <div class="about-item">
+          <div class="about-icon">售</div>
+          <h4>完美售後</h4>
+          <p>調音 · 維修 · 保養<br>一站式服務</p>
+        </div>
+        <div class="about-item">
+          <div class="about-icon">運</div>
+          <h4>專業搬運</h4>
+          <p>經驗豐富團隊<br>安全送達</p>
+        </div>
+        <div class="about-item">
+          <div class="about-icon">回</div>
+          <h4>回收服務</h4>
+          <p>高價回收<br>舊琴煥發新價值</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section-warm" id="services">
+    <div class="container">
+      <div class="sec-header">
+        <p class="sec-label">Our Services</p>
+        <h2 class="sec-title">主要服務</h2>
+        <div class="sec-line"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-img">
+            <img src="./service-recycle.jpg" alt="鋼琴回收">
+          </div>
+          <div class="service-body">
+            <h3>鋼琴回收</h3>
+            <p>高價回收二手鋼琴</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img">
+            <img src="./service-rent.jpg" alt="鋼琴租借">
+          </div>
+          <div class="service-body">
+            <h3>鋼琴租借</h3>
+            <p>婚禮、演出短期租借</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img">
+            <img src="./service-tuning.jpg" alt="鋼琴調音">
+          </div>
+          <div class="service-body">
+            <h3>鋼琴調音</h3>
+            <p>專業調音師服務</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img">
+            <img src="./service-move.jpg" alt="鋼琴搬運">
+          </div>
+          <div class="service-body">
+            <h3>鋼琴搬運</h3>
+            <p>安全可靠的搬運</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img">
+            <img src="./service-repair.jpg" alt="鋼琴維修">
+          </div>
+          <div class="service-body">
+            <h3>維修保養</h3>
+            <p>全面的維修保養</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img">
+            <img src="./service-wedding.jpg" alt="婚禮伴奏">
+          </div>
+          <div class="service-body">
+            <h3>婚禮伴奏</h3>
+            <p>專業琴師演出</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KNOWLEDGE -->
+  <section class="section section-warm" id="knowledge">
+    <div class="container">
+      <div class="sec-header">
+        <p class="sec-label">Piano Knowledge</p>
+        <h2 class="sec-title">鋼琴小知識</h2>
+        <div class="sec-line"></div>
+      </div>
+      <div class="knowledge-grid">
+        <div class="knowledge-card">
+          <div class="knowledge-img">
+            <img src="./knowledge-maintenance.jpg" alt="保養">
+          </div>
+          <div class="knowledge-body">
+            <h3>鋼琴保養方法</h3>
+          </div>
+        </div>
+        <div class="knowledge-card">
+          <div class="knowledge-img">
+            <img src="./knowledge-used.jpg" alt="二手">
+          </div>
+          <div class="knowledge-body">
+            <h3>日本原裝二手琴</h3>
+          </div>
+        </div>
+        <div class="knowledge-card">
+          <div class="knowledge-img">
+            <img src="./knowledge-humidity.jpg" alt="濕度">
+          </div>
+          <div class="knowledge-body">
+            <h3>濕度與溫度</h3>
+          </div>
+        </div>
+        <div class="knowledge-card">
+          <div class="knowledge-img">
+            <img src="./knowledge-tuning.jpg" alt="調音">
+          </div>
+          <div class="knowledge-body">
+            <h3>調音週期</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section-dark" id="contact">
+    <div class="container">
+      <div class="sec-header">
+        <p class="sec-label">Contact Us</p>
+        <h2 class="sec-title">聯絡我們</h2>
+        <div class="sec-line"></div>
+      </div>
+      <div class="contact-grid">
+        <ul class="contact-list">
+          <li>
+            <p class="contact-tag">地址</p>
+            <p class="contact-val">澳門半島 提督馬路<br>通利工業大廈10樓A<br>(大利桌球樓上,宏基超市旁)</p>
+          </li>
+          <li>
+            <p class="contact-tag">電話</p>
+            <p class="contact-val">TEL +853 65947744</p>
+          </li>
+          <li>
+            <p class="contact-tag">WeChat</p>
+            <p class="contact-val">MY65947744</p>
+          </li>
+          <li>
+            <p class="contact-tag">電郵</p>
+            <p class="contact-val">meiyampiano@gmail.com</p>
+          </li>
+          <li>
+            <p class="contact-tag">營業時間</p>
+            <p class="contact-val">MON TO SUN<br>11AM-7PM</p>
+          </li>
+          <li>
+            <div class="wechat-row">
+              <img src="./wechat-QRcode.png" alt="WeChat">
+              <p>WeChat ID<br>MY65947744</p>
+            </div>
+          </li>
+        </ul>
+        <div class="map-box">
+          <img src="./map.jpg" alt="地圖">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="./logo.png" alt="美音鋼琴">
+      <span>美音鋼琴</span>
+    </div>
+    <p class="footer-time">MON TO SUN<br>11AM-7PM</p>
+    <p class="footer-copy">Copyright © 2025 美音鋼琴 | Created by Rein</p>
+  </footer>
+
+
+
+</body></html>
