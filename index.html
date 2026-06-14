@@ -537,13 +537,18 @@
     }
 
     .wechat-row img {
-      width: 80px;
+      width: 120px;
       border: 1px solid rgba(255,255,255,0.15);
     }
 
     .wechat-row p {
-      font-size: 0.75rem;
-      color: #888;
+      font-size: 1.1rem;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .contact-val {
+      font-size: 1.1rem;
     }
 
     .map-box {
@@ -625,7 +630,21 @@
       .hero-right::after {
         background: linear-gradient(to bottom, var(--bg) 0%, transparent 30%);
       }
-      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 75px;
+        left: 0;
+        right: 0;
+        background: rgba(247, 245, 240, 0.98);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.active { display: flex; }
+      .nav-phone { display: block; font-size: 0.85rem; }
       .about-grid { grid-template-columns: repeat(2, 1fr); }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .products-grid { grid-template-columns: repeat(2, 1fr); }
@@ -640,6 +659,8 @@
       .knowledge-grid { grid-template-columns: 1fr; }
       .container { padding: 0 1.5rem; }
       .hero h1 { font-size: 2.5rem; }
+      .nav-phone { font-size: 0.8rem; }
+      .hero-left { padding: 6rem 1.5rem 3rem; }
     }
   </style>
 </head>
@@ -652,7 +673,12 @@
         <img src="./logo.png" alt="美音鋼琴">
         <span>美音鋼琴直銷</span>
       </a>
-      <ul class="nav-links">
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
         <li><a href="#home">首頁</a></li>
         <li><a href="#about">簡介</a></li>
         <li><a href="#services">服務</a></li>
@@ -878,6 +904,20 @@
     <p class="footer-copy">Copyright © 2025 美音鋼琴 | Created by Rein</p>
   </footer>
 
-
+  <script>
+    function toggleMenu() {
+      var nav = document.getElementById('navLinks');
+      var hamburger = document.querySelector('.hamburger');
+      nav.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
+    // Close menu when clicking a link
+    document.querySelectorAll('#navLinks a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        document.getElementById('navLinks').classList.remove('active');
+        document.querySelector('.hamburger').classList.remove('active');
+      });
+    });
+  </script>
 
 </body></html>
